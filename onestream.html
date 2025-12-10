@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="media/favicon.ico">
+    <title>OneStream XF Platform - Fiotto Consulting</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo-area">
+                <a href="index.html" class="logo-link">
+                    <div class="logo-icon-container">
+                        <img src="media/logo_icon.png" alt="Fiotto Consulting Icon" class="logo-icon">
+                    </div>
+                    
+                    <div class="logo-text-group">
+                        <span class="logo-main-title">Fiotto Consulting</span>
+                        <span class="logo-subtitle">Strategic Business Solutions</span>
+                    </div>
+                </a>
+            </div>
+            
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="onestream.html" class="nav-link active">OneStream</a> <a href="our-team.html" class="nav-link">Our Team</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section hero-onestream fade-in">
+        <div class="container">
+            <h2>OneStream XF: A Unified Platform for CPM</h2>
+            <p class="subtitle">Transform your financial operations with the industry-leading solution and Fiotto Consulting's expertise.</p>
+        </div>
+    </section>
+
+    <section class="benefits-section fade-in">
+        <div class="container">
+            <h3>The Advantages of OneStream for Your Company</h3>
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in">
+                    <h4>Unified Consolidation</h4>
+                    <p>Reduce closing cycles and improve accuracy with a single source of truth for financial data.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <h4>Dynamic Planning</h4>
+                    <p>Move from static budgets to integrated and collaborative rolling forecasts.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <h4>Drill-Down and Analysis</h4>
+                    <p>Gain complete visibility into data with real-time analysis, without the need for external software.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works-section fade-in">
+        <div class="container">
+            <h3>How the OneStream Platform Works</h3>
+            <p class="intro-text fade-in">OneStream is based on an XF (Extensible Finance) architecture that allows you to unify every CPM process in a single application.</p>
+            
+            <div class="process-step fade-in">
+                <h4>1. Data Unification</h4>
+                <img src="media/onestream_data.jpg" alt="OneStream Data Unification Diagram" class="process-diagram">
+                <p>Automatic import and validation of data from ERP, GL systems, and other sources, ensuring consistency.</p>
+            </div>
+            
+            <div class="process-step fade-in">
+                <h4>2. Integrated CPM Process</h4>
+                <img src="media/onestream_cycle.jpg" alt="OneStream Integrated CPM Cycle Diagram" class="process-diagram">
+                <p>The platform manages financial close, strategic planning, and regulatory reporting in an interconnected way.</p>
+            </div>
+            
+            <div class="call-to-action-bottom fade-in">
+                <h4>Ready to transform your finances?</h4>
+                <a href="contact.html" class="cta-button">Talk to Our Experts</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Fiotto Consulting. All rights reserved.</p>
+            <p><a href="contact.html">Contact us for a consultation</a></p>
+        </div>
+    </footer>
+
+    <script>
+        const header = document.querySelector('.header');
+        const scrollThreshold = 50; 
+
+        function handleScroll() {
+            if (window.scrollY > scrollThreshold) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            // Animazione Fade-In per le sezioni
+            const sections = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', handleScroll);
+        window.addEventListener('scroll', handleScroll);
+    </script>
+
+</body>
+</html>
