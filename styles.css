@@ -1,0 +1,716 @@
+/* Importazione Font Semplice e Reset di Base */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    --color-petrol: #005f6b; /* Petrol Blue */
+    --color-dark: #1f1f1f; /* Dark Black/Grey */
+    --color-light: #ffffff; /* White */
+    --color-accent: #ffb600; /* Optional accent color for buttons */
+    --padding-section: 80px;
+    --border-radius: 8px;
+    
+    /* Variabili per l'animazione dell'header */
+    --header-height-default: 100px; 
+    --header-height-scrolled: 70px;
+}
+
+/* Reset Globale */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Nuovi Font in stile Apple: Usa SF Pro (se disponibile) o fallback su Helvetica/Roboto */
+    font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif, 'Roboto', sans-serif;
+    color: var(--color-dark);
+    line-height: 1.6;
+    background-color: #f4f4f4; /* Light grey background */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ____________________ HEADER and NAVIGATION ____________________ */
+
+.header {
+    background-color: var(--color-dark);
+    height: var(--header-height-default); /* Altezza predefinita grande */
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: height 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Altezza quando l'utente scorre (scrolled) */
+.header.scrolled {
+    height: var(--header-height-scrolled); /* Altezza ridotta dopo lo scroll */
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    height: 100%;
+}
+
+/* LOGO e Testo Gruppo */
+.logo-area {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--color-light);
+}
+
+/* ICONA (Dimensionamento) */
+.logo-icon-container {
+    width: 40px; 
+    height: 40px; 
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+}
+
+.logo-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+}
+
+/* Testo */
+.logo-text-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.logo-main-title {
+    font-size: 1.8em; /* Dimensione predefinita piccola */
+    font-weight: 700;
+    white-space: nowrap;
+    transition: font-size 0.3s ease;
+}
+
+.logo-subtitle {
+    font-size: 0.9em;
+    font-weight: 300;
+    margin-top: -3px;
+    white-space: nowrap;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+    opacity: 1;
+    max-height: 20px;
+}
+
+/* ANIMAZIONE SCROLL: Sottotitolo scompare, Titolo si ingrandisce */
+.header.scrolled .logo-subtitle {
+    opacity: 0;
+    max-height: 0; 
+    margin-top: 0;
+    pointer-events: none; /* Rimuove interazione */
+}
+
+.header.scrolled .logo-main-title {
+    font-size: 2.1em; /* Titolo leggermente più grande dopo lo scroll */
+}
+
+/* Navigazione */
+.nav a {
+    color: var(--color-light);
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.nav a:hover, .nav a.active {
+    color: var(--color-petrol);
+}
+
+/* ____________________ HERO SECTION ____________________ */
+
+.hero-section {
+    background-color: var(--color-petrol);
+    color: var(--color-light);
+    padding: 120px 0;
+    text-align: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/hero_bg.jpg'); /* Modifica percorso */ 
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.hero-section h2 {
+    font-size: 3em;
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.hero-section .subtitle {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--color-accent);
+    color: var(--color-dark);
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+    background-color: #e5a300;
+    transform: translateY(-2px);
+}
+
+/* ____________________ CONTENT SECTIONS ____________________ */
+
+section {
+    padding: var(--padding-section) 0;
+}
+
+h3, h4 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--color-petrol);
+    font-weight: 700;
+}
+
+/* Services Grid (index.html) */
+.services-section {
+    background-color: var(--color-light);
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+
+.service-card {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 5px solid var(--color-petrol);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.service-card h4 {
+    color: var(--color-dark);
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+/* Image Placeholders */
+.image-placeholder {
+    background-color: #e0e0e0;
+    height: auto; 
+    padding: 10px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-dark);
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+/* OneStream Focus Section (index.html) */
+.onestream-focus {
+    background-color: #f4f4f4;
+}
+
+.focus-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    text-align: left;
+}
+
+.focus-content .text-block {
+    flex: 1;
+}
+
+.focus-content .image-placeholder {
+    flex: 1;
+    min-height: 350px;
+    order: 2; 
+}
+
+.focus-content h4 {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.learn-more-link {
+    color: var(--color-petrol);
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-block;
+    margin-top: 15px;
+    border-bottom: 2px solid var(--color-petrol);
+    transition: color 0.3s, border-bottom-color 0.3s;
+}
+
+.learn-more-link:hover {
+    color: var(--color-dark);
+    border-bottom-color: var(--color-dark);
+}
+
+/* ____________________ FOOTER ____________________ */
+
+.footer {
+    background-color: var(--color-dark);
+    color: #cccccc;
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.footer p {
+    margin-bottom: 5px;
+}
+
+.footer a {
+    color: var(--color-petrol);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* ____________________ ANIMATIONS (Fade-In) ____________________ */
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ____________________ RESPONSIVENESS (Media Queries) ____________________ */
+
+@media (max-width: 900px) {
+    /* For tablets and medium screens */
+    .focus-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .focus-content .image-placeholder {
+        order: 1;
+        min-height: 250px; /* RIDUCI ALTEZZA MINIMA TABLET */
+    }
+
+    .focus-content h4 {
+        text-align: center;
+    }
+
+    .header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav {
+        margin-top: 15px;
+    }
+
+    .nav a {
+        margin: 0 10px;
+    }
+
+    .hero-section {
+        padding: 80px 0;
+    }
+
+    .hero-section h2 {
+        font-size: 2.5em;
+    }
+    
+    /* TEAM PAGE MOBILE */
+    .profile-layout {
+        grid-template-columns: 1fr; /* Single column on small screens */
+    }
+    .photo-container {
+        position: static; /* Remove sticky on mobile */
+        top: 0;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Per smartphone */
+    
+    .header {
+        height: 80px; 
+        --header-height-default: 80px; 
+        --header-height-scrolled: 60px;
+    }
+
+    .header.scrolled {
+        height: var(--header-height-scrolled); 
+    }
+
+    /* 1. RISOLUZIONE PROBLEMA SOVRAPPOSIZIONE NAV MOBILE */
+    /* Aumentiamo il padding top della prima sezione per lasciare spazio all'header */
+    .hero-section {
+        padding-top: calc(80px + 30px); /* Altezza header mobile + spazio */
+        margin-top: -30px; /* Compensiamo leggermente */
+    }
+
+    .logo-icon-container {
+        width: 35px; 
+        height: 35px;
+    }
+
+    .logo-main-title {
+        font-size: 1.5em; 
+    }
+
+    .header.scrolled .logo-main-title {
+        font-size: 1.7em; 
+    }
+    
+    .nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .nav a {
+        margin: 5px 0;
+        border-bottom: 1px solid var(--color-petrol);
+    }
+    
+    .hero-section h2 {
+        font-size: 2em;
+    }
+    
+    section {
+        padding: 50px 0;
+    }
+    
+    .service-card {
+        padding: 20px;
+    }
+
+    /* 2. RISOLUZIONE PROBLEMA DASHBOARD HOME ENORME */
+    .focus-content {
+        flex-direction: column;
+    }
+    .focus-content .image-placeholder {
+        min-height: 200px; /* Riduci l'altezza minima dell'immagine */
+        order: 1;
+    }
+
+    /* 3. RISOLUZIONE PROBLEMA FOTO FOUNDER TROPPO PICCOLA */
+    .profile-photo {
+        height: 250px; /* Altezza fissa ma più grande su mobile */
+        width: 250px; /* Assicuriamo che sia quadrato */
+        margin: 0 auto 15px auto; /* Centriamo il riquadro */
+    }
+    .founder-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* 4. RISOLUZIONE PROBLEMA CENTRATURA RIQUADRI (3 COLONNE -> 1 COLONNA CENTRATA) */
+    /* Funziona per service-grid (Home) e benefits-grid (OneStream) */
+    .service-grid, .benefits-grid {
+        grid-template-columns: 1fr; /* Una colonna */
+        max-width: 400px; /* Larghezza massima per centrare la colonna */
+        margin: 0 auto; /* Centra la colonna */
+        gap: 20px;
+    }
+    
+    .process-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ____________________ ADDITIONS FOR ONESTREAM.HTML ____________________ */
+
+.hero-onestream {
+    background-color: var(--color-dark);
+}
+
+.benefits-section {
+    background-color: #f9f9f9;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.benefit-card {
+    background-color: var(--color-light);
+    padding: 25px;
+    border-left: 4px solid var(--color-petrol);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.benefit-card h4 {
+    color: var(--color-dark);
+    text-align: left;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+.how-it-works-section {
+    background-color: var(--color-light);
+    text-align: center;
+}
+
+.how-it-works-section .intro-text {
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+    font-size: 1.1em;
+}
+
+/* NUOVA GRIGLIA A DUE COLONNE AFFIANCATE (DESKTOP) */
+.process-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px; 
+    margin-bottom: 50px;
+    text-align: center; 
+}
+
+.process-step {
+    padding: 30px;
+    background-color: var(--color-light); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); 
+    border-radius: var(--border-radius);
+    text-align: left;
+    transition: transform 0.3s ease;
+    height: 100%; 
+}
+
+.process-step:hover {
+    transform: translateY(-3px); 
+}
+
+.process-step h4 {
+    color: var(--color-dark);
+    margin-bottom: 15px;
+}
+
+/* NUOVA REGOLA per le immagini dei diagrammi in onestream.html */
+.process-diagram {
+    width: 100%;
+    max-height: 400px; /* Altezza massima per diagrammi più quadrati */
+    object-fit: contain; 
+    margin: 20px 0;
+    border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    padding: 10px; 
+    display: block; 
+}
+
+.call-to-action-bottom {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* ____________________ ADDITIONS FOR CONTACT.HTML ____________________ */
+
+.hero-contact {
+    background-color: var(--color-petrol);
+}
+
+.contact-info-section {
+    background-color: #f4f4f4;
+}
+
+.contact-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 50px;
+    text-align: left;
+}
+
+.contact-form h3, .contact-details h3 {
+    text-align: left;
+    margin-bottom: 25px;
+    color: var(--color-dark);
+}
+
+.contact-form-container {
+    background-color: var(--color-light);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.contact-form label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 700;
+    color: var(--color-dark);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form .cta-button {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.contact-details {
+    padding-top: 30px;
+}
+
+.detail-item h4 {
+    font-size: 1.2em;
+    color: var(--color-petrol);
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.map-placeholder {
+    height: 200px;
+    border: 1px solid #ccc;
+    margin-top: 30px;
+}
+
+/* ____________________ ADDITIONS FOR OUR-TEAM.HTML ____________________ */
+
+.hero-team {
+    background-color: var(--color-dark); 
+}
+
+.profile-section {
+    background-color: var(--color-light);
+}
+
+.profile-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr; 
+    gap: 50px;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.photo-container {
+    padding-top: 20px;
+    position: sticky; 
+    top: 100px; 
+    text-align: center;
+}
+
+.profile-photo {
+    background-color: #ccc;
+    height: 300px; 
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #666;
+    font-weight: 600;
+}
+
+.founder-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.founder-title h4 {
+    text-align: center;
+    color: var(--color-dark);
+    margin-bottom: 5px;
+}
+
+.founder-title p {
+    text-align: center;
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 0;
+}
+
+.bio-content h3 {
+    text-align: left;
+    color: var(--color-petrol);
+    margin-bottom: 25px;
+}
+
+.bio-content h4 {
+    text-align: left;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    border-left: 3px solid var(--color-petrol);
+    padding-left: 10px;
+    color: var(--color-dark); 
+}
+
+.bio-content .cta-button {
+    margin-top: 40px;
+    display: inline-block;
+    width: auto;
+}
+
+/* ____________________ ADDITIONAL RESPONSIVENESS ____________________ */
+
+@media (max-width: 900px) {
+    .contact-layout {
+        grid-template-columns: 1fr; 
+    }
+}
