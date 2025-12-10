@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="media/favicon.ico">
+    <title>Our Team - Fiotto Consulting</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo-area">
+                <a href="index.html" class="logo-link">
+                    <div class="logo-icon-container">
+                        <img src="media/logo_icon.png" alt="Fiotto Consulting Icon" class="logo-icon">
+                    </div>
+                    
+                    <div class="logo-text-group">
+                        <span class="logo-main-title">Fiotto Consulting</span>
+                        <span class="logo-subtitle">Strategic Business Solutions</span>
+                    </div>
+                </a>
+            </div>
+            
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="onestream.html" class="nav-link">OneStream</a>
+                <a href="our-team.html" class="nav-link active">Our Team</a> <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section hero-team fade-in">
+        <div class="container">
+            <h2 class="fade-in">Meet Our Founder</h2>
+            <p class="subtitle fade-in">Leadership, vision, and commitment guide our strategic business solutions.</p>
+        </div>
+    </section>
+
+    <section class="profile-section">
+        <div class="container profile-layout">
+            
+            <div class="photo-container fade-in">
+                <div class="profile-photo">
+                    <img src="media/frank_impastato.jpg" alt="Frank Impastato Photo" class="founder-photo">
+                </div>
+                <div class="founder-title">
+                    <h4>Francesco (Frank) Impastato</h4>
+                    <p>Founder & Managing Partner, Fiotto Consulting</p>
+                </div>
+            </div>
+
+            <div class="bio-content">
+                <h3 class="fade-in">A History of Financial Transformation</h3>
+                
+                <p class="fade-in">Frank Impastato is a distinguished figure in the IT business and Corporate Performance Management (CPM) sectors, with a career spanning several pivotal decades in digital finance. His journey culminated in the founding of <b>Fiotto Consulting</b> in 2024, a New York-based firm dedicated to guiding enterprises through seamless OneStream implementation projects.</p>
+
+                <h4 class="fade-in">Early Innovator in Digital Finance</h4>
+                <p class="fade-in">Frank began his path with <b>IMRS</b> (International Managing Reporting Services), a pioneering company that helped launch digital finance alongside the advent of the personal computer. Here, he contributed to the development of early data consolidation and reporting software, such as <b>FinalForm</b>. Following a company rebrand, he transitioned to <b>Hyperion Solutions Corporation</b>, where he served for seven years as a financial consultant and project manager.</p>
+
+                <h4 class="fade-in">Deep OneStream Expertise</h4>
+                <p class="fade-in">His deep specialization in CPM and OneStream began during his decade-long tenure as a <b>Managing Partner at CompIntelligence</b>, a firm officially recognized as an Authorized OneStream Training Provider. Furthermore, Frank utilized his expertise to manage the 11-year implementation and system update cycle for <b>Brookfield Corporation</b>, a major OneStream client.</p>
+
+                <h4 class="fade-in">The Fiotto Consulting Mission</h4>
+                <p class="fade-in">The mission of Fiotto Consulting is rooted in Frank’s direct, hands-on experience with his clients. The firm stands out for its profound knowledge of <b>OneStream</b>, ensuring that clients achieve optimal results and a fluid execution of their financial performance transformation.</p>
+
+                <div class="fade-in">
+                    <a href="contact.html" class="cta-button">Engage Our Expertise</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Fiotto Consulting. All rights reserved.</p>
+            <p><a href="contact.html">Contact us for a consultation</a></p>
+        </div>
+    </footer>
+
+    <script>
+        const header = document.querySelector('.header');
+        const scrollThreshold = 50; 
+
+        function handleScroll() {
+            if (window.scrollY > scrollThreshold) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            // Animazione Fade-In per le sezioni
+            const sections = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', handleScroll);
+        window.addEventListener('scroll', handleScroll);
+    </script>
+
+</body>
+</html>
